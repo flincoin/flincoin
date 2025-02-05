@@ -1,0 +1,33 @@
+# /etc/conf.d/flincoind: config file for /etc/init.d/flincoind
+
+# Config file location
+#FLINCOIND_CONFIGFILE="/etc/flincoin/flincoin.conf"
+
+# What directory to write pidfile to?  (created and owned by $FLINCOIND_USER)
+#FLINCOIND_PIDDIR="/var/run/flincoind"
+
+# What filename to give the pidfile
+#FLINCOIND_PIDFILE="${FLINCOIND_PIDDIR}/flincoind.pid"
+
+# Where to write flincoind data (be mindful that the blockchain is large)
+#FLINCOIND_DATADIR="/var/lib/flincoind"
+
+# User and group to own flincoind process
+#FLINCOIND_USER="flincoin"
+#FLINCOIND_GROUP="flincoin"
+
+# Path to flincoind executable
+#FLINCOIND_BIN="/usr/bin/flincoind"
+
+# Nice value to run flincoind under
+#FLINCOIND_NICE=0
+
+# Additional options (avoid -conf and -datadir, use flags above)
+FLINCOIND_OPTS="-disablewallet"
+
+# The timeout in seconds OpenRC will wait for flincoind to terminate
+# after a SIGTERM has been raised.
+# Note that this will be mapped as argument to start-stop-daemon's
+# '--retry' option, which means you can specify a retry schedule
+# here. For more information see man 8 start-stop-daemon.
+FLINCOIND_SIGTERM_TIMEOUT=60

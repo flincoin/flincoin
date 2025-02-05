@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Flincoin Core
+Comment=Connect to the Flincoin P2P Network
+Comment[de]=Verbinde mit dem Flincoin peer-to-peer Netzwerk
+Comment[fr]=Flincoin, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Flincoin, eşten eşe kriptografik sanal para birimi
+Exec=flincoin-qt %u
+Terminal=false
+Type=Application
+Icon=flincoin128
+MimeType=x-scheme-handler/flincoin;
+Categories=Office;Finance;

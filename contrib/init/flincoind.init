@@ -1,0 +1,67 @@
+#!/bin/bash
+#
+#  flincoind The flincoin core server.
+#
+#
+# chkconfig: 345 80 20
+# description: flincoind
+# processname: flincoind
+#
+
+# Source function library.
+. /etc/init.d/functions
+
+# you can override defaults in /etc/sysconfig/flincoind, see below
+if [ -f /etc/sysconfig/flincoind ]; then
+        . /etc/sysconfig/flincoind
+fi
+
+RETVAL=0
+
+prog=flincoind
+# you can override the lockfile via FLINCOIND_LOCKFILE in /etc/sysconfig/flincoind
+lockfile=${FLINCOIND_LOCKFILE-/var/lock/subsys/flincoind}
+
+# flincoind defaults to /usr/bin/flincoind, override with FLINCOIND_BIN
+flincoind=${FLINCOIND_BIN-/usr/bin/flincoind}
+
+# flincoind opts default to -disablewallet, override with FLINCOIND_OPTS
+flincoind_opts=${FLINCOIND_OPTS--disablewallet}
+
+start() {
+    echo -n $"Starting $prog: "
+    daemon $DAEMONOPTS $flincoind $flincoind_opts
+    RETVAL=$?
+    echo
+    [ $RETVAL -eq 0 ] && touch $lockfile
+    return $RETVAL
+}
+
+stop() {
+    echo -n $"Stopping $prog: "
+    killproc $prog
+    RETVAL=$?
+    echo
+    [ $RETVAL -eq 0 ] && rm -f $lockfile
+    return $RETVAL
+}
+
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    status)
+        status $prog
+        ;;
+    restart)
+        stop
+        start
+        ;;
+    *)
+        echo "Usage: service $prog {start|stop|status|restart}"
+        exit 1
+        ;;
+esac

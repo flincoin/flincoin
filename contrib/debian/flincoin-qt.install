@@ -1,0 +1,6 @@
+usr/local/bin/flincoin-qt usr/bin
+share/pixmaps/flincoin32.xpm usr/share/pixmaps
+share/pixmaps/flincoin16.xpm usr/share/pixmaps
+share/pixmaps/flincoin128.png usr/share/pixmaps
+debian/flincoin-qt.desktop usr/share/applications
+debian/flincoin-qt.protocol usr/share/kde4/services/
