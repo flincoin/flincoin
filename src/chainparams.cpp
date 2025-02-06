@@ -111,10 +111,10 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nTimeout = 0; // Disabled
 
         // The best chain should have at least this much work.
-        consensus.nMinimumChainWork = uint256S("0x00"); // gen
+        consensus.nMinimumChainWork = uint256S("0x0000000000000000000000000000000000000000000000000016f5d420ba0128"); // block 5000
 
         // By default assume that the signatures in ancestors of this block are valid.
-        consensus.defaultAssumeValid = uint256S("0x00"); //gen
+        consensus.defaultAssumeValid = uint256S("0xecaa54ad3da741ea506e159fd2876da75cca9d87f513cbef16ee2ab1e9fa5566"); //block 5000
 
         // AuxPoW parameters
         consensus.nAuxpowChainId = 0x0088; // 136
@@ -180,14 +180,16 @@ public:
         checkpointData = (CCheckpointData) {
             boost::assign::map_list_of
             (      0, uint256S("0xe02a0efbcf285b547b144b0872558aba52c4e1ff33c4658cb0a086583f2e9ec8"))
+            (      1000, uint256S("0xafcc0f000f9bae93d7e1efc22c2da2bfcf55541680a5eda6eb824fd3e9bc5c62"))
+            (      5000, uint256S("0xecaa54ad3da741ea506e159fd2876da75cca9d87f513cbef16ee2ab1e9fa5566"))
 
         };
 
         chainTxData = ChainTxData{
             // Data as of block e7d4577405223918491477db725a393bcfc349d8ee63b0a4fde23cbfbfd81dea (height 5050000).
             // Tx estimate based on average between 2023-01-16 (92752025 at 4556625) and 2024-01-16 (226128837 at 5050000)
-            1737840287, // * UNIX timestamp of last checkpoint block
-            0,   // * total number of transactions between genesis and last checkpoint
+            1738771068, // * UNIX timestamp of last checkpoint block
+            8020,   // * total number of transactions between genesis and last checkpoint
                         //   (the tx=... number in the SetBestChain debug.log lines)
             0.0        // * estimated number of transactions per second after checkpoint
                         // (226128837 - 92752025) / 31536000 = 4.2293509
